@@ -1,0 +1,31 @@
+{
+  "name": "protostream",
+  "version": "0.0.1",
+  "description": "Yields protobuf messages from a stream, as they are encountered.",
+  "main": "protostream.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:chrisdew/protostream.git"
+  },
+  "keywords": [
+    "protocol",
+    "buffers",
+    "stream",
+    "protobuf"
+  ],
+  "author": "Chris Dew <cmsdew@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/chrisdew/protostream/issues"
+  },
+  "homepage": "https://github.com/chrisdew/protostream",
+  "devDependencies": {
+    "protobuf": "^0.11.0",
+    "mocha": "^2.0.1"
+  },
+  "dependencies": {
+  }
+}
