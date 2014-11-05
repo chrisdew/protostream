@@ -11,20 +11,20 @@ Theory
 ------
 
 In Protocol Buffers, the serialisation of a wrapper message with N repeated `child` messages is identical to the serialisation
-of a the concatenated serialisation of N wrapper message with one child message each.
+of the concatenated serialisation of N wrapper messages with one child message each.
 
 From the test suite:
 
-    var bufA = Buffer.concat([Wrapper.serialize({wrapped:[people.fred]}),
+    var bufA = Wrapper.serialize({wrapped:[people.fred,people.wilma,people.barney]});
+    var bufB = Buffer.concat([Wrapper.serialize({wrapped:[people.fred]}),
                               Wrapper.serialize({wrapped:[people.wilma]}),
                               Wrapper.serialize({wrapped:[people.barney]})]);
-    var bufB = Wrapper.serialize({wrapped:[people.fred,people.wilma,people.barney]});
     assert.deepEqual(bufA, bufB);
  
 This allows us to represent a stream as a wrapper message with repeating elements, yet send indiviual message into the stream 
 by wrapping and sending them one at a time. 
 
-This has the benefit that a the full content of a stream can be decoded as a single message of type "Wrapper".
+This has the benefit that a the full content of a stream can be decoded as a single message of type "Wrapper".  This is really good for compatibility with tools that can decode  protobuf messages, such as Wireshark. 
 
 The .proto file used, includes the Wrapper message, and a Person message from Google's examples.
 
@@ -33,7 +33,7 @@ test.proto:
     package test;
 
     message Wrapper {
-      repeated Person wrapped = 42; // large number (>31)to test multibyte field key
+      repeated Person wrapped = 42; // large number (>15) to test multibyte field key
     }
 
     message Person {
@@ -59,9 +59,9 @@ test.proto:
 Implementation
 --------------
 
-ProtoStream is a tool which uses a state machine to pull out the individual child messages, one by one, as bytes are received.
+ProtoStream is a NodeJS module which uses a state machine to emit the individual child messages, one by one, as bytes are received.
 
-These child messages can then be decoded separately, the the Protobuf library of your choice.
+These child messages can then be decoded separately, by the Protobuf library of your choice.
 
 From the test suite:
 

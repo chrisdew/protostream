@@ -37,10 +37,10 @@ var people = {
 describe('protostream', function() {
   // the following assertion is the basis for this using protobuf to frame protobuf messages within a stream
   it('should show that multiple concatenated messages are identical to one with repeated elements', function() {
-    var bufA = Buffer.concat([Wrapper.serialize({wrapped:[people.fred]}),
+    var bufA = Wrapper.serialize({wrapped:[people.fred,people.wilma,people.barney]});
+    var bufB = Buffer.concat([Wrapper.serialize({wrapped:[people.fred]}),
                               Wrapper.serialize({wrapped:[people.wilma]}),
                               Wrapper.serialize({wrapped:[people.barney]})]);
-    var bufB = Wrapper.serialize({wrapped:[people.fred,people.wilma,people.barney]});
     assert.deepEqual(bufA, bufB);
   });
   it('should pass a single message', function(done) {
