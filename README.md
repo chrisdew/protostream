@@ -3,14 +3,13 @@ ProtoStream
 
 Protocol Buffers have no default framing for use in a streaming protocol, such as TCP.
 
-ProtoStream is a [Stream Transform](http://nodejs.org/api/stream.html#stream_class_stream_transform) 
-whose outputs are discrete Protocol Buffer messages, which can be decoded by the library of your choice.
+ProtoStream is a [Stream Transform](http://nodejs.org/api/stream.html#stream_class_stream_transform).  Its input is a stream of fragments of wrapped protobuf messages.  Its outputs are discrete Protocol Buffer messages, which can be decoded by the library of your choice.
 
 
 Theory
 ------
 
-In Protocol Buffers, the serialisation of a wrapper message with N repeated `child` messages is identical to the serialisation
+In Protocol Buffers, the serialisation of a one wrapper message with N repeated `child` messages is identical to the serialisation
 of the concatenated serialisation of N wrapper messages with one child message each.
 
 From the test suite:
@@ -55,6 +54,7 @@ test.proto:
       repeated PhoneNumber phone = 4;
     }
 
+See [The Protocol Buffers documentation](https://developers.google.com/protocol-buffers/docs/encoding) for more information on the encoding format.
 
 Implementation
 --------------
