@@ -30,7 +30,7 @@ Theory
 
 In Protocol Buffers, the serialisation of a one wrapper message with N repeated child messages is identical to the concatenated serialisation of N wrapper messages with one child message each.
 
-i.e. In protobufs, the type of the outermost message is not serialised, as it is specified when decoding, and the length of the outermost message is not serialised as it is inferred from the length of the buffer to be unserialised.  Thus a Wrapper message is needed to force the Person messages' headers to be serialised.
+i.e. In protobufs, the type of the outermost message is not serialised, as it is specified when unserialising, and the length of the outermost message is not serialised as it is inferred from the length of the buffer to be unserialised.  Thus a Wrapper message is needed to force the Person messages' headers to be serialised.  The Wrapper message's headers are sacrificial.
 
 From the test suite:
 
