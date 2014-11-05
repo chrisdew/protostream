@@ -20,7 +20,6 @@ Installation:
 Code:
 
     var ps = require('protostream');
-
     var protostream = ps.createProtoStream();
 
     ... use as any other stream transform, see test/test-protostream.js for examples ...
