@@ -28,7 +28,7 @@ Code:
 Theory
 ------
 
-In Protocol Buffers, the serialisation of a one wrapper message with N repeated `child` messages is identical to the serialisation
+In Protocol Buffers, the serialisation of a one wrapper message with N repeated child messages is identical to the serialisation
 of the concatenated serialisation of N wrapper messages with one child message each.
 
 From the test suite:
