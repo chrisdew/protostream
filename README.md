@@ -1,5 +1,7 @@
-ProtoStream
+ProtoStream 
 ===========
+
+[![Build Status](https://travis-ci.org/chrisdew/protostream.svg?branch=master)](https://travis-ci.org/chrisdew/protostream)
 
 Protocol Buffers have no default framing for use in a streaming protocol, such as TCP.
 
