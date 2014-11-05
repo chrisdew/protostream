@@ -7,6 +7,7 @@ Protocol Buffers have no default framing for use in a streaming protocol, such a
 
 ProtoStream is a [Stream Transform](http://nodejs.org/api/stream.html#stream_class_stream_transform).  Its input is a stream of fragments of wrapped protobuf messages.  Its outputs are discrete Protocol Buffer messages, which can be decoded by the library of your choice.
 
+It's sort-of a SAX parser for Protocol Buffers.  (You can only pull out one level of wrapped messages, rather than making arbitrary queries.)
 
 Theory
 ------
