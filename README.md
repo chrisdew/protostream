@@ -95,4 +95,4 @@ To Do
  
 ===
 
-Copyright: Thorcom System Limited, 2014.  Released under MIT license.
+Copyright: Thorcom Systems Limited, 2014.  Released under MIT license.
