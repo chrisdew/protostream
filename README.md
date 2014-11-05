@@ -93,3 +93,6 @@ To Do
 
 * The state machine operates on single bytes, as needed by the WAIT_KEY and WAIT_LEN states.  The WAIT_BYTES state would be capable of processing whole chunks, without the function-call-per-byte overhead, if the state machine were modified.
  
+===
+
+Copyright: Thorcom System Limited, 2014.  Released under MIT license.
