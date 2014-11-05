@@ -1,7 +1,7 @@
 // An example .proto file for use with ProtoStream.
 // Derived from: https://developers.google.com/protocol-buffers/docs/overview
 
-package example;
+package test;
 
 message Wrapper {
   repeated Person wrapped = 42; // large number to test multibyte field tag
