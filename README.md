@@ -9,6 +9,23 @@ ProtoStream is a [Stream Transform](http://nodejs.org/api/stream.html#stream_cla
 
 It's sort-of a SAX parser for Protocol Buffers.  (You can only pull out one level of wrapped messages, rather than being able to make arbitrary queries.)
 
+
+Usage
+-----
+
+Installation:
+
+    npm install protostream
+
+Code:
+
+    var ps = require('protostream');
+
+    var protostream = ps.createProtoStream();
+
+    ... use as any other stream transform, see test/test-protostream.js for examples ...
+
+
 Theory
 ------
 
