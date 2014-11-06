@@ -110,6 +110,7 @@ To Do
 -----
 
 * The state machine operates on single bytes, as needed by the WAIT_KEY and WAIT_LEN states.  The WAIT_BYTES state would be capable of processing whole chunks, without the function-call-per-byte overhead, if the state machine were modified.
+* By using the .desc file and the key, the output of ProtoStream could also contain the message type.  Multiple types of `repeated` messages would need to be delared in the `Wrapper`.  This would break the current API, unless options were used.
  
 ===
 
