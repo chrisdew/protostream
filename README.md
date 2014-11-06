@@ -30,7 +30,7 @@ Theory
 
 In Protocol Buffers, the serialisation of a one wrapper message with N repeated child messages is identical to the concatenated serialisation of N wrapper messages with one child message each.
 
-i.e. In protobufs, the type of the outermost message is not serialised, as it is specified when unserialising, and the length of the outermost message is not serialised as it is inferred from the length of the buffer to be unserialised.  Thus a Wrapper message is needed to force the Person messages' headers to be serialised.  The Wrapper message's headers are sacrificial.
+i.e. In protobufs, the type of the outermost message is not serialised, as it is specified when unserialising, and the length of the outermost message is not serialised as it is inferred from the length of the buffer to be unserialised.  Thus a Wrapper message is needed to force the child messages' headers to be serialised.  The Wrapper message is sacrificial, it exists only to cause the child messages to have their type and length serialised.
 
 From the test suite:
 
@@ -40,7 +40,7 @@ From the test suite:
                               Wrapper.serialize({wrapped:[people.barney]})]);
     assert.deepEqual(bufA, bufB);
  
-This allows us to represent a stream as a wrapper message with repeating elements, yet send indiviual message into the stream 
+This allows us to represent a stream as a wrapper message with repeating elements, yet send individual message into the stream 
 by wrapping and sending them one at a time. 
 
 This has the benefit that a the full content of a stream can be decoded as a single message of type "Wrapper".  This is really good for compatibility with tools that can decode  protobuf messages, such as Wireshark. 
